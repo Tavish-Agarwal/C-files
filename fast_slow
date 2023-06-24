@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+struct LL {
+    int num;
+    struct LL* next;
+}a,b,c,d,e, *slow, *fast, *head;
+
+int is_circular(struct LL *n1) {
+    int a=0;
+    for (slow=head,fast=head; ; slow=slow->next, fast=fast->next->next) {
+        if (slow == fast) {
+            a++;
+            if (a==2)
+                return 1;
+        }
+        if (fast==NULL || fast->next == NULL) {
+            return 0;
+        }
+    }
+}
+
+int main() {
+    head = &a;
+    a.num = 1;
+    a.next = &b;
+    b.num = 2;
+    b.next = &c;
+    c.num = 3;
+    c.next = &d;
+    d.num = 4;
+    d.next = &e;
+    e.num = 5;
+    e.next = NULL;
+
+    int a = is_circular(head);
+    if (a==1)
+    printf("The list is circular");
+    if (a==0)
+    printf("The list is linear");
+
+   return 0;
+}
