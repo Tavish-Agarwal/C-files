@@ -2,27 +2,29 @@
 #include<stdlib.h>
 
 
-int main (int argc, int *argv[]) {
+int main (int argc, char *argv[]) {
 	void *p[2], *q, *r;
 	p[0] = q;
 	p[1] = r;
 
 	int i,j;
-	i=**argv;
-	j=**argv+1);
+	i=atoi(argv[1]);
+	j=atoi(argv[2]);
 	int *arr = (int *)malloc(i*sizeof(int));
 	float *ptr = (float *)malloc(j*sizeof(float));
 	
 	printf("Enter %d integer numbers:", i);
 	for (int k=0; k<i; k++) {
-		scanf("%d", arr);
+		scanf("%d", arr+k);
 	}
 	printf("Enter %d decimal numbers:", j);
 	for (int k=0; k<j; k++) {
-		scanf("%f", ptr);
+		scanf("%f", ptr+k);
 	}
-	q = (int *)arr;
-	r = (float *)ptr;
+	q = (int *)q ;
+	q = arr;
+	r = (float *)r ;
+	r = ptr;
 
 	printf("The members of 2D array include:\n");
 	for (int k=0; k<i; k++) {
